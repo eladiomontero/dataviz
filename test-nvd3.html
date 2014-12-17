@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link href="./bower_components/nvd3/src/nv.d3.css" rel="stylesheet" />
+        <script src="./bower_components/d3/d3.min.js"></script>
+        <script src="./bower_components/nvd3/nv.d3.min.js"></script>
+    </head>
+    <body>
+        
+    <div id="linechart"><svg style="width:450px;height:450px;"></svg></div>
+
+
+    <script>
+
+
+
+            data_linechart=[{"color": "black", "values": [{"y": "10973800256", "x": "1/5/2014"}, {"y": "2750101029", "x": "1/3/2014"}, {"y": "15507233235", "x": "1/6/2014"}, {"y": "", "x": "1/1/2014"}, {"y": "512248374.7", "x": "1/2/2014"}, {"y": "16604324560", "x": "1/4/2014"}], "key": "sine", "yAxis": "1"}];
+
+
+        nv.addGraph(function() {
+        var chart = nv.models.lineChart();
+
+        chart.margin({top: 30, right: 60, bottom: 20, left: 60});
+
+        var datum = data_linechart;
+
+
+
+                chart.xAxis
+                .tickFormat(d3.format(',r'));
+            chart.yAxis
+                .tickFormat(d3.format(',.02f'));
+
+
+
+          chart.showLegend(true);
+
+
+    
+
+        
+
+
+
+            d3.select('#linechart svg')
+            .datum(datum)
+            .transition().duration(500)
+            .attr('width', 450)
+            .attr('height', 450)
+            .call(chart);
+
+
+        });
+
+
+
+    </script>
+
+    </body>
+</html>
